@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         // Force links and redirects to open in the WebView instead of in a browser
         // mWebView.setWebViewClient(new WebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient(this));
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return false;
+            }
+        });
 
         mWebView.loadUrl("file:///android_asset/index.html");
     }
